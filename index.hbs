@@ -29,15 +29,16 @@ into the {body} of the default.hbs template --}}
 {{!-- The main content area --}}
 <main id="site-main" class="site-main outer">
     <div class="inner posts">
-
         <div class="post-feed">
+            {{#get "posts" filter="featured:true" limit="all" include="tags" as |featured|}}
+            
             {{#foreach featured}}
 
                 {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
                 {{> "post-card"}}
 
             {{/foreach}}
+            {{/get}}
         </div>
-
     </div>
 </main>
