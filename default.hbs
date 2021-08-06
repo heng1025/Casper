@@ -12,7 +12,11 @@
     {{!-- Theme assets - use the {asset} helper to reference styles & scripts,
     this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
-
+    <link rel="stylesheet" type="text/css" href="{{asset "built/search.css"}}" />
+    
+    <script>
+        var siteUrl = '{{@site.url}}';
+    </script>
     {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings,
     it should always be the last tag before the closing head tag --}}
     {{ghost_head}}
@@ -40,6 +44,7 @@
             <div class="gh-head-menu">
                 {{navigation}}
             </div>
+            {{> "search"}}
         </nav>
     </header>
 
@@ -63,11 +68,13 @@
 
 
 {{!-- Scripts - handle member signups, responsive videos, infinite scroll, floating headers, and galleries --}}
-<script
+{{!-- <script
     src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
-</script>
+</script> --}}
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
 <script src="{{asset "built/casper.js"}}"></script>
 <!-- 支持数学公式 -->
 <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>  

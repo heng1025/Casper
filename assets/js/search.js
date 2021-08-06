@@ -1,3 +1,8 @@
+$(function () {
+    'use strict';
+    search();
+});
+
 function search() {
     'use strict';
     if (
@@ -9,6 +14,7 @@ function search() {
 
     var searchInput = $('.search-field');
     var searchButton = $('.search-button');
+    var searchClearButton = $('.search-button-clear');
     var searchResult = $('.search-result');
 
     var url =
@@ -79,23 +85,21 @@ function search() {
         result.forEach(function (post) {
             output +=
                 '<div class="search-result-row">' +
-                '<a class="search-result-row-link" href="' +
-                post.doc.url +
-                '">' +
-                '<div class="search-result-row-title">' +
-                post.doc.title +
-                '</div><div class="search-result-row-excerpt">' +
-                post.doc.excerpt +
-                '</div></a>' +
+                ' <a class="search-result-row-link" href="' + post.doc.url +'">' +
+                '  <div class="search-result-row-title">' + post.doc.title +'</div>'+
+                '  <div class="search-result-row-excerpt">' + post.doc.excerpt + '</div>'+
+                ' </a>' +
                 '</div>';
         });
 
         searchResult.html(output);
 
         if (e.target.value.length > 0) {
-            searchButton.addClass('search-button-clear');
+            searchButton.hide();
+            searchClearButton.show();
         } else {
-            searchButton.removeClass('search-button-clear');
+            searchClearButton.hide();
+            searchButton.show();
         }
     });
 
@@ -103,10 +107,8 @@ function search() {
         e.preventDefault();
     });
 
-    searchButton.on('click', function () {
-        if ($(this).hasClass('search-button-clear')) {
-            searchInput.val('').focus().keyup();
-        }
+    searchClearButton.on('click', function () {
+        searchInput.val('').focus().keyup();
     });
 
     $(document).keyup(function (e) {

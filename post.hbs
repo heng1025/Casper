@@ -82,11 +82,11 @@
             exclude the post we're currently on from being included. --}}
 
             {{#get "posts" filter="id:-{{id}}" include="authors" limit="3" as |more_posts|}}
-            {{#if more_posts}}
-            {{#foreach more_posts}}
-            {{> "post-card"}}
-            {{/foreach}}
-            {{/if}}
+                {{#if more_posts}}
+                    {{#foreach more_posts}}
+                    {{> "post-card"}}
+                    {{/foreach}}
+                {{/if}}
             {{/get}}
 
         </div>

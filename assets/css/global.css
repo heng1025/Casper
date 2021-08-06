@@ -182,7 +182,7 @@ optgroup,
 select,
 textarea {
     margin: 0; /* 3 */
-    color: inherit; /* 1 */
+    /* color: inherit; */
     font: inherit; /* 2 */
 }
 button {
