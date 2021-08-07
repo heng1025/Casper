@@ -8,13 +8,10 @@
         "ghost-api": "v4"
     },
     "license": "MIT",
-    "screenshots": {
-        "desktop": "assets/screenshot-desktop.jpg",
-        "mobile": "assets/screenshot-mobile.jpg"
-    },
     "scripts": {
         "dev": "gulp",
         "zip": "gulp zip",
+        "build": "gulp build",
         "test": "gscan .",
         "test:ci": "gscan --fatal --verbose .",
         "pretest": "gulp build",

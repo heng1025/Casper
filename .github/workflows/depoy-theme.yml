@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: |
           yarn
-          yarn test:ci
+          yarn build
 
       - name: Deploy Ghost Theme
         uses: TryGhost/action-deploy-theme@v1.4.1
