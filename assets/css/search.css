@@ -5,6 +5,12 @@
     align-items: center;
 }
 
+@media screen and (max-width: 900px) {
+    .search  {
+      display: none;
+    }
+}
+
 input[type="text"] {
     padding: 0 40px 0 10px;
     width: 100%;
