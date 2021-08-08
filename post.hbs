@@ -100,7 +100,7 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/tocbot/4.13.0/tocbot.min.js"></script>
 <script>
 $(function(){
-    var { width: winWidth } = window.screen;
+    var { innerWidth: winWidth } = window;
     if(winWidth > 1300) {
         initToc();
     }
