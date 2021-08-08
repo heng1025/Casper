@@ -1,7 +1,10 @@
-{{!< default}} {{!-- The tag above means: insert everything in this file into the {body} tag of the default.hbs template
-    --}} {{#post}} {{!-- Everything inside the #post block pulls data from the post --}} <article
-    class="article {{post_class}}">
-
+{{!< default}} 
+{{!-- The tag above means: insert everything in this file into the {body} tag of the default.hbs template --}} 
+{{#post}} 
+{{!-- Everything inside the #post block pulls data from the post --}} 
+<article class="article {{post_class}}">
+    {{!-- Toc container --}}
+    <section class="gh-toc"></section>
     <header class="article-header gh-canvas">
 
         {{#if primary_tag}}
@@ -59,6 +62,7 @@
 
     <section class="gh-content gh-canvas">
         {{content}}
+   
     </section>
 
 
@@ -67,29 +71,64 @@
         {{> "comments"}}
     </section>
 
+</article>
 
-    </article>
 
+{{!-- Read more links, just above the footer --}}
+<aside class="read-more-wrap">
+    <div class="read-more inner">
 
-    {{!-- Read more links, just above the footer --}}
-    <aside class="read-more-wrap">
-        <div class="read-more inner">
+        {{!-- The {#get} helper below fetches some of the latest posts here
+        so that people have something else to read when they finish this one.
 
-            {{!-- The {#get} helper below fetches some of the latest posts here
-            so that people have something else to read when they finish this one.
+        This query gets the latest 3 posts on the site, but adds a filter to
+        exclude the post we're currently on from being included. --}}
 
-            This query gets the latest 3 posts on the site, but adds a filter to
-            exclude the post we're currently on from being included. --}}
+        {{#get "posts" filter="id:-{{id}}" include="authors" limit="3" as |more_posts|}}
+            {{#if more_posts}}
+                {{#foreach more_posts}}
+                {{> "post-card"}}
+                {{/foreach}}
+            {{/if}}
+        {{/get}}
 
-            {{#get "posts" filter="id:-{{id}}" include="authors" limit="3" as |more_posts|}}
-                {{#if more_posts}}
-                    {{#foreach more_posts}}
-                    {{> "post-card"}}
-                    {{/foreach}}
-                {{/if}}
-            {{/get}}
+    </div>
+</aside>
 
-        </div>
-    </aside>
-
-    {{/post}}
+{{/post}}
+{{!-- TOC --}}
+<script src="https://cdn.bootcdn.net/ajax/libs/tocbot/4.13.0/tocbot.min.js"></script>
+<script>
+$(function(){
+    var { width: winWidth } = window.screen;
+    if(winWidth > 1300) {
+        initToc();
+    }
+    
+    function initToc() {
+        var tocContainer = document.querySelector('.gh-toc')
+        var headerImage = document.querySelector('.article-image')
+        var { offsetHeight, offsetTop } = document.querySelector('.article-header')
+        var { offsetHeight: contentHeight } = document.querySelector('.gh-content')
+        
+        var tocOffsetHeight = offsetHeight + offsetTop;
+        
+        tocbot.init({
+          tocSelector: '.gh-toc',
+          contentSelector: '.gh-content',
+          headingSelector: 'h1, h2, h3',
+          hasInnerContainers: true,
+        });
+        
+        window.addEventListener('scroll',() => {
+            var { offsetHeight: imageHeight } = headerImage;
+            var scrollTop = document.documentElement.scrollTop;
+            if(scrollTop > tocOffsetHeight+ imageHeight && scrollTop < contentHeight + offsetHeight + imageHeight) {
+                tocContainer.style.display = 'block'
+            } else {
+                tocContainer.style.display = 'none'
+            }
+        })
+    }
+})
+</script>
