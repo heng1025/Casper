@@ -1,12 +1,10 @@
-# Casper
+# Specar (fork Casper)
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/). This is the latest development version of Casper! If you're just looking to download the latest release, head over to the [releases](https://github.com/TryGhost/Casper/releases) page.
-
-&nbsp;
-
-![screenshot-desktop](https://user-images.githubusercontent.com/353959/66987533-40eae100-f0c1-11e9-822e-cbaf38fb8e3f.png)
-
-&nbsp;
+# Feature
+ ## add search 
+ ![search](./screenshot/search.png)
+ ## add TOC
+![toc](./screenshot/toc.png)
 
 # First time using a Ghost theme?
 
