@@ -2,7 +2,7 @@
 
 # Feature
  ## add search 
- ![search](./screenshot/search.png)
+ ![search](./screenshot/search.jpg)
  ## add TOC
 ![toc](./screenshot/toc.png)
 
