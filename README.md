@@ -5,7 +5,8 @@
  ![search](./screenshot/search.jpg)
  ## add TOC
 ![toc](./screenshot/toc.png)
-
+ ## Table style
+![toc](./screenshot/table.png)
 # First time using a Ghost theme?
 
 Ghost uses a simple templating language called [Handlebars](http://handlebarsjs.com/) for its themes.

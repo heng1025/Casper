@@ -50,7 +50,6 @@ fieldset,
 form,
 label,
 legend,
-table,
 caption,
 tbody,
 tfoot,
@@ -103,10 +102,7 @@ q:after {
     content: "";
     content: none;
 }
-table {
-    border-spacing: 0;
-    border-collapse: collapse;
-}
+
 img {
     display: block;
     max-width: 100%;
@@ -242,13 +238,45 @@ legend {
 textarea {
     overflow: auto;
 }
+
 table {
-    border-spacing: 0;
+    width: 100%;
     border-collapse: collapse;
+    font-size: 15px;
+    word-break: normal;
 }
-td,
+
+thead {
+    border-bottom: 1px solid var(--mid-gray-color);
+    background-color: var(--lighter-gray-color);
+}
+
+tr + tr {
+    border-top: 1px solid var(--mid-gray-color);
+}
+
+tr:hover td {
+    background-color: var(--lighter-gray-color);
+}
+
+th,
+td {
+    padding: 10px 15px;
+    line-height: 1.5;
+}
+
 th {
-    padding: 0;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+}
+
+tfoot {
+    border-top: 1px solid var(--mid-gray-color);
+}
+
+tfoot td {
+    font-weight: 700;
 }
 
 /* ==========================================================================
