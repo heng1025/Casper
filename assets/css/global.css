@@ -403,8 +403,8 @@ blockquote {
 }
 
 blockquote p {
-    margin: 0.8em 0;
-    font-size: 1.2em;
+    margin: 0.5em 0;
+    font-size: 1em;
     font-weight: 300;
 }
 

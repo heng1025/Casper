@@ -30,7 +30,16 @@ into the {body} of the default.hbs template --}}
 <main id="site-main" class="site-main outer">
     <div class="inner posts">
         <div class="post-index">
-            {{#get "posts" filter="featured:true" limit="15" include="tags,authors" as |featured|}}
+            {{!-- https://ghost.org/docs/content-api/#filtering --}}
+            {{!-- https://ghost.org/docs/themes/helpers/get/ --}}
+            {{!-- display latest article --}}
+            {{!-- {{#get "posts" filter="primary_author:bot" limit="1" include="tags,authors" as |post| }}
+                {{#post}}
+                    {{> "post-card"}}
+                {{/post}}
+            {{/get}} --}}
+
+            {{#get "posts" filter="featured:true" limit="16" include="tags,authors" as |featured|}}
                 {{#foreach featured}}
                     {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
                     {{> "post-card"}}
